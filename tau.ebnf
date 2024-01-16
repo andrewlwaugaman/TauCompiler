@@ -1,0 +1,29 @@
+Program : Function {Function} .
+Function : "func" "ID" "(" Params ")" ":" (Type | "void") CompoundStatement .
+Params: [Paramdecl {"," Paramdecl}] .
+Paramdecl: "ID" ":" Type .
+
+Comparison : "<=" | "==" |">=" | "<" | ">" | "!=" .
+Type : ["[" ["INT"] "]"] ("bool" | "int") .
+BooleanLiteral : "true" | "false" .
+FuncOrIdOrArray : "ID" ["("([Expr] {("," Expr)}) ")" | "[" Expr "]"] .
+CallExpr : "ID" "("([Expr] {("," Expr)}) ")" .
+
+Expr :  AndExpr {"or" AndExpr} .
+AndExpr : CmprExpr {"and" CmprExpr} .
+CmprExpr : AddExpr {Comparison AddExpr} .
+AddExpr : MultExpr {("+" | "-") MultExpr} .
+MultExpr : UnaryExpr {("*" | "/") UnaryExpr} .
+UnaryExpr : "-" UnaryExpr | "not" UnaryExpr | BaseExpr .
+BaseExpr: "INT" | FuncOrIdOrArray | BooleanLiteral | "(" Expr ")" .
+
+VariableDeclaration : "var" "ID" ":" Type .
+
+IfStatement : "if" Expr CompoundStatement ["else" CompoundStatement] .
+PrintStatement : "print" Expr .
+AssignmentStatement : Expr "=" Expr .
+WhileStatement : "while" Expr CompoundStatement .
+CallStatement : "call" CallExpr .
+Statement : IfStatement | CallStatement | PrintStatement | AssignmentStatement | WhileStatement | CompoundStatement .
+CompoundStatement : "{" {VariableDeclaration} {Statement} [ReturnStatement] "}" .
+ReturnStatement : "return" [Expr] .

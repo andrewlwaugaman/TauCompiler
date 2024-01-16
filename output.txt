@@ -1,0 +1,184 @@
+Instructions:
+[    0]         call 'main'  
+[    1]         halt  
+[    2] lab 'goodfunc'  
+[    3]         st SP, RA  
+[    4]         addi tmpFP, SP, 1  
+[    5]         st tmpFP, FP  
+[    6]         addi tmpSP, SP, 2  
+[    7]         st tmpSP, SP  
+[    8]         addi FP, SP, 0  
+[    9]         addi SP, SP, 3  
+[   10]         imm r1, 10  
+[   11]         print r1  
+[   12]         imm r1, 1  
+[   13]         addi RV, FP, -1  
+[   14]         st RV, r1  
+[   15]         addi tmpFP, FP, 1  
+[   16]         addi tmpSP, FP, 2  
+[   17]         ld FP, tmpFP  
+[   18]         ld SP, tmpSP  
+[   19]         ld RA, SP  
+[   20]         ji RA  
+[   21]         addi tmpFP, FP, 1  
+[   22]         addi tmpSP, FP, 2  
+[   23]         ld FP, tmpFP  
+[   24]         ld SP, tmpSP  
+[   25]         ld RA, SP  
+[   26]         ji RA  
+[   27] lab 'main'  
+[   28]         st SP, RA  
+[   29]         addi tmpFP, SP, 1  
+[   30]         st tmpFP, FP  
+[   31]         addi tmpSP, SP, 2  
+[   32]         st tmpSP, SP  
+[   33]         addi FP, SP, 0  
+[   34]         addi SP, SP, 4  
+[   35]         imm r2, 0  
+[   36]         addi r1, FP, 3  
+[   37]         st r1, r2  
+[   38]         imm r2, 1  
+[   39]         addi r1, FP, 3  
+[   40]         st r1, r2  
+[   41]         addi r1, FP, 3  
+[   42]         ld r1, r1  
+[   43]         print r1  
+[   44]         addi tmpFP, FP, 1  
+[   45]         addi tmpSP, FP, 2  
+[   46]         ld FP, tmpFP  
+[   47]         ld SP, tmpSP  
+[   48]         ld RA, SP  
+[   49]         ji RA  
+Begin Execution
+      regs  =
+              {'PC': 0, 'FP': 0, 'SP': 1}
+      frame = [0]
+      caller= []
+[   0] Call(label='main', comment='')
+      regs  =
+              {'PC': 27, 'FP': 0, 'SP': 1, 'RA': 1}
+      frame = [0]
+      caller= []
+[  27] Label(label='main', comment='')
+      regs  =
+              {'PC': 28, 'FP': 0, 'SP': 1, 'RA': 1}
+      frame = [0]
+      caller= []
+[  28] Store(address='SP', v='RA', comment='')
+      regs  =
+              {'PC': 29, 'FP': 0, 'SP': 1, 'RA': 1}
+      frame = [0]
+      caller= []
+[  29] AddImmediate(dst='tmpFP', x='SP', value=1, comment='')
+      regs  =
+              {'PC': 30, 'FP': 0, 'SP': 1, 'RA': 1, 'tmpFP': 2}
+      frame = [0]
+      caller= []
+[  30] Store(address='tmpFP', v='FP', comment='')
+      regs  =
+              {'PC': 31, 'FP': 0, 'SP': 1, 'RA': 1, 'tmpFP': 2}
+      frame = [0]
+      caller= []
+[  31] AddImmediate(dst='tmpSP', x='SP', value=2, comment='')
+      regs  =
+              {'PC': 32, 'FP': 0, 'SP': 1, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3}
+      frame = [0]
+      caller= []
+[  32] Store(address='tmpSP', v='SP', comment='')
+      regs  =
+              {'PC': 33, 'FP': 0, 'SP': 1, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3}
+      frame = [0]
+      caller= []
+[  33] AddImmediate(dst='FP', x='SP', value=0, comment='')
+      regs  =
+              {'PC': 34, 'FP': 1, 'SP': 1, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3}
+      frame = []
+      caller= [0]
+[  34] AddImmediate(dst='SP', x='SP', value=4, comment='')
+      regs  =
+              {'PC': 35, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3}
+      frame = [1, 0, 1, 0]
+      caller= [0]
+[  35] Immediate(dst='r2', value=0, comment='')
+      regs  =
+              {'PC': 36, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 0}
+      frame = [1, 0, 1, 0]
+      caller= [0]
+[  36] AddImmediate(dst='r1', x='FP', value=3, comment='')
+      regs  =
+              {'PC': 37, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 0, 'r1': 4}
+      frame = [1, 0, 1, 0]
+      caller= [0]
+[  37] Store(address='r1', v='r2', comment='')
+      regs  =
+              {'PC': 38, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 0, 'r1': 4}
+      frame = [1, 0, 1, 0]
+      caller= [0]
+[  38] Immediate(dst='r2', value=1, comment='')
+      regs  =
+              {'PC': 39, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 4}
+      frame = [1, 0, 1, 0]
+      caller= [0]
+[  39] AddImmediate(dst='r1', x='FP', value=3, comment='')
+      regs  =
+              {'PC': 40, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 4}
+      frame = [1, 0, 1, 0]
+      caller= [0]
+[  40] Store(address='r1', v='r2', comment='')
+      regs  =
+              {'PC': 41, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 4}
+      frame = [1, 0, 1, 1]
+      caller= [0]
+[  41] AddImmediate(dst='r1', x='FP', value=3, comment='')
+      regs  =
+              {'PC': 42, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 4}
+      frame = [1, 0, 1, 1]
+      caller= [0]
+[  42] Load(dst='r1', address='r1', comment='')
+      regs  =
+              {'PC': 43, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 1}
+      frame = [1, 0, 1, 1]
+      caller= [0]
+[  43] Print(v='r1', comment='')
+1
+      regs  =
+              {'PC': 44, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 1}
+      frame = [1, 0, 1, 1]
+      caller= [0]
+[  44] AddImmediate(dst='tmpFP', x='FP', value=1, comment='')
+      regs  =
+              {'PC': 45, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 1}
+      frame = [1, 0, 1, 1]
+      caller= [0]
+[  45] AddImmediate(dst='tmpSP', x='FP', value=2, comment='')
+      regs  =
+              {'PC': 46, 'FP': 1, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 1}
+      frame = [1, 0, 1, 1]
+      caller= [0]
+[  46] Load(dst='FP', address='tmpFP', comment='')
+      regs  =
+              {'PC': 47, 'FP': 0, 'SP': 5, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 1}
+      frame = [0, 1, 0, 1, 1]
+      caller= []
+[  47] Load(dst='SP', address='tmpSP', comment='')
+      regs  =
+              {'PC': 48, 'FP': 0, 'SP': 1, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 1}
+      frame = [0]
+      caller= []
+[  48] Load(dst='RA', address='SP', comment='')
+      regs  =
+              {'PC': 49, 'FP': 0, 'SP': 1, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 1}
+      frame = [0]
+      caller= []
+[  49] JumpIndirect(v='RA', comment='')
+      regs  =
+              {'PC': 1, 'FP': 0, 'SP': 1, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 1}
+      frame = [0]
+      caller= []
+[   1] Halt(comment='')
+      regs  =
+              {'PC': 2, 'FP': 0, 'SP': 1, 'RA': 1, 'tmpFP': 2, 'tmpSP': 3, 'r2': 1, 'r1': 1}
+      frame = [0]
+      caller= []
+[   2] Label(label='goodfunc', comment='')
+End Execution
